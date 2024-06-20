@@ -634,7 +634,7 @@ func (self PathNode) marshal(p *thrift.BinaryProtocol, opts *Options) error {
 	if self.IsError() {
 		return self.Node
 	}
-	if len(self.Next) == 0 {
+	if len(self.Next) == 0 && self.Node.t != thrift.LIST {
 		p.Buf = append(p.Buf, self.raw()...)
 		return nil
 	}
